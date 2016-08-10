@@ -32,20 +32,43 @@ void setup() {
 void loop() {
   while (Serial.available() <= 0) {
   }
-
   byte aux;
-  Serial.println("Reading");
-  for (int index1 = 0x00; index1 <= 0x6FF; index1 = index1 + 0x20) {
-    for (int index2 = index2; index2 <= index2 + 0x1F; index2 = index2 + 0x01) {
-      aux = read_8(index2);
-      Serial.print(aux, HEX);
-      Serial.print(" ");
+
+  Serial.println("INCREMENTAL REGISTERS:");
+  Serial.print("00: ");
+
+  for (byte index = 0x00; index < 0x10; index = index + 0x01) {
+    aux = read_8(index);
+    Serial.print(aux, HEX);
+    Serial.print(" ");
+  }
+
+  Serial.print("\n");
+  Serial.print("10: ");
+
+  for (byte index = 0x10; index < 0x20; index = index + 0x01) {
+    aux = read_8(index);
+    Serial.print(aux, HEX);
+    Serial.print(" ");
+  }
+
+  Serial.println("\n");
+  Serial.print("NOT INCREMENTAL REGISTERS:");
+  int cnt = -1 ;
+  for (int index = 0x20; index <= 0x3FF; index = index + 0x1) {
+    cnt++;
+    if (cnt % 8 == 0) {
+      Serial.print("\n");
+      Serial.print(index, HEX);
+      Serial.print(": ");
     }
-    Serial.print("\n");
+
+    aux = read_8(index);
+    Serial.print(aux, HEX);
+    Serial.print(" ");
   }
   Serial.println("END");
   while (1) {
-
   }
 }
 
@@ -84,6 +107,76 @@ int read_8(int address) {
   }
   chip_select_high();
   return value;
+}
+/************************************************/
+void write_8(int address, char dat) {
+  char bit;
+  char inbit;
+  char index;
+  int value = 0;
+  chip_select_low();
+  send_8(WREN);
+  chip_select_high();
+  delay(10);
+  chip_select_low();
+
+  send_8(WRITE);
+  send_address(address);
+
+  // verstehe ich nicht
+  for (char index = 7; index >= 0; index--) {
+    bit = ((dat >> index) & 0x01);
+    if (bit == 1) {
+      digitalWrite(DATAOUT, HIGH);
+      sclk();
+    } else {
+      digitalWrite(DATAOUT, LOW);
+      sclk();
+    }
+  }
+  // verstehe ich nicht
+
+  chip_select_high();
+}
+/***********************************************/
+void write_secure(int address, char dat1, char dat2) {
+  char bit;
+  char inbit;
+  char index;
+  int value = 0;
+  chip_select_low();
+  send_8(WREN);
+  chip_select_high();
+  delay(10);
+  chip_select_low();
+
+  send_8(WRINC);
+  send_address(address);
+
+  // verstehe ich nicht
+  for (char index = 7; index >= 0; index--) {
+    bit = ((dat1 >> index) & 0x01);
+    if (bit == 1) {
+      digitalWrite(DATAOUT, HIGH);
+      sclk();
+    } else {
+      digitalWrite(DATAOUT, LOW);
+      sclk();
+    }
+  }
+  for (char index = 7; index >= 0; index--) {
+    bit = ((dat2 >> index) & 0x01);
+    if (bit == 1) {
+      digitalWrite(DATAOUT, HIGH);
+      sclk();
+    } else {
+      digitalWrite(DATAOUT, LOW);
+      sclk();
+    }
+  }
+  // verstehe ich nicht
+
+  chip_select_high();
 }
 /***********************************************/
 void send_8(char dat) {
