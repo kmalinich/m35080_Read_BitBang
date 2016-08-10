@@ -2,13 +2,20 @@
 Arduino sketch for dumping data from the registers of the m35080 eeprom throught the bitbang method.
 
 
-ISSUES:
+This default Skech now reads the full memory. The read begins, after any kind of serial data is transmitted to the arduino (e.g just press the space bar and hit enter).
 
-The dump from the incremental registers, is for demo purposes, as this sketch can only read 1 byte and the incremental registers are 2 bytes.
+## Write to Memory
+`You can write to memory using the write_8() function. An example is:
+int adr = 0x2F1;
+char val = 0x20;
+write_8(adr, val);`
 
-The datasheet doesn´t provide instruction for reading incremental registers, so only half of the register could be read.
+or also 
 
-TODO:
-
--Adding user friendly UI.
--Code optimizartions
+`int adr = 0x2F1;
+char val = 0x00;
+char content[] = {0x12};
+for (int i = 0; i <= sizeof(content); i++) {
+  write_8(adr, content[i]);
+  adr = adr + 0x1;
+}`
