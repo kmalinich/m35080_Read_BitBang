@@ -1,9 +1,14 @@
 # m35080_Read_BitBang
-This default Skech now reads the full memory. The read begins, after any kind of serial data is transmitted to the arduino (e.g just press the space bar and hit enter).
+This default Skech now reads the full memory of EEPROM chips of the m35080 family like M35080, 08ODOWQ, M35080VP and 35080V6. </br> The read begins, after any kind of serial data is transmitted to the arduino (e.g just press the space bar and hit enter).
 
-Secure Incremental Memory rages from 0x00 till 0x1F
-
+Secure Incremental Memory rages from 0x00 till 0x1F</br>
 Standard Mempory ranges from 0x20 till 0x3FF
+
+## Arduino
+I used an arduino micro, but any arduino which supports SPI is fine. Just switch the board in the arduino IDE.
+
+## M35080 EEPROM
+A datasheet is included in this repo. Connect Chipselect, Clock, In, Out, Vcc(5V) and Vss accordingly. Make sure, that max. current never exceeds 10mA.
 
 ## Write to Memory (0x20 till 0x3FF)
 You can write to memory using the write_8() function.
