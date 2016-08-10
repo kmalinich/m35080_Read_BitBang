@@ -44,8 +44,8 @@ write_secure(adr, val1, val2);```
 
 ## Decoding BMW Cluster Information on E-Series Models
 
-Example: </br>
-If the secure memory looks like this:
+Secure memory info contains byte pairs. So every pair gets a hex index (which is NOT equal to the hex adress). </br>
+If our example memory looks like this:
 
 | 00  | 01 | 02 | 03 | 04 | 05 | 06 | 07 | Memory-Adress |
 | :--:|:--:| :--:|:--:|:--:|:--:|:--:|:--:|:--:|
