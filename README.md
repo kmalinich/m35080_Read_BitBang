@@ -1,10 +1,11 @@
 # m35080_Read_BitBang
-Arduino sketch for dumping data from the registers of the m35080 eeprom throught the bitbang method.
-
-
 This default Skech now reads the full memory. The read begins, after any kind of serial data is transmitted to the arduino (e.g just press the space bar and hit enter).
 
-## Write to Memory
+Secure Incremental Memory rages from 0x00 till 0x1F
+
+Standard Mempory ranges from 0x20 till 0x3FF
+
+## Write to Memory (0x20 till 0x3FF)
 You can write to memory using the write_8() function.
 Example:
 
@@ -22,7 +23,7 @@ for (int i = 0; i <= sizeof(content); i++) {
   adr = adr + 0x1;
 }`
 
-## Write to secure (incremental) memory
+## Write to secure (incremental) memory (0x00 till 0x1F)
 You can write to memory using the write_secure() function.
 Please keep in mind, that you can only count up these values, so be careful what you write.
 YOU CAN'T WRITE LOWER NUMBERS THAN WHAT IS ALREADY IN THERE
