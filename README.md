@@ -56,3 +56,5 @@ If our example memory looks like this:
 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 0x10 - 0x1F |
 
 The Hex-Value for the milage (km) is 26125 (bec. its the 5. column where the hex changes from 2613 to 2612) which equals 155.940 km in decimal.
+
+The VIN is placed at 0x2E8- 0x2EF where 0x2E8 - 0x2EE contain the last 7 digits of the vehicle VIN and 0x2EF probably contains the checksum (not sure about that). Since coding a new VIN from standard manufacturer tools is not possible, you may want to write the whole are blank (0xFF for 0x2E8- 0x2EF). After that, it's in factory state and the VIN can be set with manufacturer tools via OBD (but only once, so do this right after installing the cluster)
