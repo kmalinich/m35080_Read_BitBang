@@ -26,7 +26,7 @@ for (int i = 0; i <= sizeof(content); i++) {
 ## Write to secure (incremental) memory (0x00 till 0x1F)
 You can write to memory using the write_secure() function.
 Please keep in mind, that you can only count up these values, so be careful what you write.
-YOU CAN'T WRITE LOWER NUMBERS THAN WHAT IS ALREADY IN THERE
+*YOU CAN'T WRITE LOWER NUMBERS THAN WHAT IS ALREADY IN THERE*
 
 Example:
 
