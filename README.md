@@ -6,6 +6,7 @@ This default Skech now reads the full memory. The read begins, after any kind of
 
 ## Write to Memory
 You can write to memory using the write_8() function. An example is:
+
 `int adr = 0x2F1;
 char val = 0x20;
 write_8(adr, val);`
