@@ -11,7 +11,8 @@ I used an arduino micro, but any arduino which supports SPI is fine. Just switch
 A datasheet is included in this repo. Connect Chipselect, Clock, In, Out, Vcc(5V) and Vss accordingly. Make sure, that max. current never exceeds 10mA.
 
 ## Write to Memory (0x20 till 0x3FF)
-You can write to memory using the write_8() function.
+You can write to memory using the write_8() function. </br>
+*Please backup your full memory before you make any changes.*
 
 Example:
 
@@ -40,3 +41,17 @@ Example:
 char val1 = 0x12;
 char val1 = 0x26;
 write_secure(adr, val1, val2);```
+
+## Decoding BMW Cluster Information on E-Series Models
+
+Example: </br>
+If the secure memory looks like this:
+
+
+Line 1 (from 0x00 till 0x0F)</br>
+ 00   01   02   03   04   05  06   07</br>
+2613 2613 2613 2613 2612 2612 2612 2612
+
+Line 2 (from 0x10 till 0x1F)
+ 08   09    A    B    C    D    E    F  
+2612 2612 2612 2612 2612 2612 2612 2612 </br>
