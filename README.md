@@ -49,10 +49,10 @@ If the secure memory looks like this:
 
 | 00  | 01 | 02 | 03 | 04 | 05 | 06 | 07 |
 | :--:|:--:| :--:|:--:|:--:|:--:|:--:|:--:|
-| 2613 | 2613 | 2613 | 2612 | 2612 | 2612 | 2612 | 2612 |
+| 2613 | 2613 | 2613 | 2613 | 2612 | 2612 | 2612 | 2612 |
 
 | 08  | 09 | A | B | C | D | E | F |
 | :--:|:--:| :--:|:--:|:--:|:--:|:--:|:--:|
 | 2612 | 2612 | 2612 | 2612 | 2612 | 2612 | 2612 | 2612 |
 
-The Hex-Value for the milage (km) is 26124 which equals 155.940 km in decimal.
+The Hex-Value for the milage (km) is 26125 (bec. its the 5. column where the hex changes from 2613 to 2612) which equals 155.940 km in decimal.
