@@ -17,16 +17,16 @@ You can write to memory using the write_8() function. </br>
 Example:
 
 ```
-adr = 0x2F1;
+int adr = 0x2F1;
 char val = 0x20;
 write_8(adr, val);
 ```
 
-or also 
+or also
 
 ```
 int adr = 0x2F1;
-intchar val = 0x00;
+char val = 0x00;
 char content[] = {0x12};
 for (int i = 0; i <= sizeof(content); i++) {
   write_8(adr, content[i]);
