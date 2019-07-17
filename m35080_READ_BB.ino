@@ -253,4 +253,4 @@ void send_address(int dat) {
 }
 
 
-// vim: set syntax=cpp filetype=cpp ts=2 sw=2 tw=0 et :
+// vim: set filetype=cpp ts=2 sw=2 tw=0 et :
