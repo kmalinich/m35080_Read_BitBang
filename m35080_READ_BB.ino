@@ -1,21 +1,24 @@
+// Pin configuration
 int Chip_Select = SS;
 int DATAIN      = MISO;
 int Sclk        = SCK;
 int DATAOUT     = MOSI;
 
-// Instruction Set
-byte WREN  = 0b00000110; // Set Write Enable Latch
-byte WRDI  = 0b00000100; // Reset Write Enable Latch
 
-byte RDSR  = 0b00000101; // Read Status Register
-byte WRSR  = 0b00000001; // Write Status Register
+// Instruction set
+byte WREN = 0b00000110; // Write enable latch set
+byte WRDI = 0b00000100; // Write enable latch reset
 
-byte READ  = 0b00000011; // Read Data from Memory Array
+byte RDSR = 0b00000101; // Status register read
+byte WRSR = 0b00000001; // Status register write
 
-byte WRITE = 0b00000010; // Write Data to Memory Array
-byte WRINC = 0b00000111; // Write Data to Secure Array
+byte READ = 0b00000011; // Read data from memory array
+
+byte WRITE = 0b00000010; // Write data to memory array
+byte WRINC = 0b00000111; // Write data to secure array
 
 
+// Initialize global variables
 unsigned int starting_address;
 
 int i = 0;
@@ -28,9 +31,9 @@ int retrieve_readings[9];
 
 
 void setup() {
-  Serial.begin(9600);
-  Serial.println();
-  
+	Serial.begin(115200);
+	Serial.println();
+
 	Serial.println("Boot");
 
 	pinMode(Chip_Select, OUTPUT);
@@ -44,8 +47,7 @@ void setup() {
 
 
 void loop() {
-	while (Serial.available() <= 0) {
-	}
+	// while (Serial.available() <= 0) { } ;
 
 	byte aux;
 
@@ -54,7 +56,7 @@ void loop() {
 
 	for (byte index = 0x00; index < 0x10; index = index + 0x01) {
 		aux = read_8(index);
-    if (aux < 16) Serial.print("0");
+		if (aux < 16) Serial.print("0");
 		Serial.print(aux, HEX);
 		Serial.print(" ");
 	}
@@ -64,7 +66,7 @@ void loop() {
 
 	for (byte index = 0x10; index < 0x20; index = index + 0x01) {
 		aux = read_8(index);
-    if (aux < 16) Serial.print("0");
+		if (aux < 16) Serial.print("0");
 		Serial.print(aux, HEX);
 		Serial.print(" ");
 	}
@@ -80,21 +82,21 @@ void loop() {
 
 		if (cnt % 8 == 0) {
 			Serial.print("\n");
-      if (index < 16)  Serial.print("0");
-      if (index < 255) Serial.print("0");
+			if (index < 16)  Serial.print("0");
+			if (index < 255) Serial.print("0");
 			Serial.print(index, HEX);
 			Serial.print(": ");
 		}
 
 		aux = read_8(index);
-    if (aux < 16) Serial.print("0");
+		if (aux < 16) Serial.print("0");
 		Serial.print(aux, HEX);
 		Serial.print(" ");
 	}
 
 	Serial.println("\n\nEND");
-	while (1) {
-	}
+
+	while (1) { } ;
 }
 
 

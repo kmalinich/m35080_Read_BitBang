@@ -1,0 +1,10 @@
+
+1 - [RED] GRN - Ground
+2 - [RED] ORN - Chip select   - SS   - Pin 10
+3 - [RED] BRN - Write protect -
+4 - [RED] BLU - Serial output - MISO - Pin 12
+
+5 - [BLK] BLU - N/C
+6 - [BLK] BRN - Serial clock - SCK  - Pin 13
+7 - [BLK] ORN - Serial input - MOSI - Pin 11
+8 - [BLK] GRN - 5v+
