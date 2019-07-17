@@ -69,7 +69,7 @@ Example VIN:
 
 | Memory address | 0x2E8 | 0x2E9 | 0x2EA | 0x2EB | 0x2EC | 0x2ED | 0x2EE |
 | -------------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
-| Hex | 4B | 54 | 31 | 37 | 37 | 32 | 37 | 35 |
+| Hex | `4B` | `54` | `31` | `37` | `37` | `32` | `37` | `35` |
 | ASCII | K | T | 1 | 7 | 7 | 2 | 7 | 5 |
 
 So here the last 7 Digits of the Vin are KT17727. For fitting a used cluster you want the whole are to be 0xFF.
