@@ -67,13 +67,13 @@ If our example memory looks like this:
 
 | 00 | 01 | 02 | 03 | 04 | 05 | 06 | 07 | Memory address |
 | -- | -- | -- | -- | -- | -- | -- | -- | -------------- |
-| 26 13 | 26 13 | 26 13 | 26 13 | 26 12 | 26 12 | 26 12 | 26 12 | `0x00` - `0x0F` |
+| 26 13 | 26 13 | 26 13 | 26 13 | 26 13 | 26 12 | 26 12 | 26 12 | `0x00` - `0x0F` |
 
 | 08 | 09 | A | B | C | D | E | F | Memory address |
 | -- | -- | - | - | - | - | - | - | -------------- |
 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | `0x10` - `0x1F` |
 
-The hex value for the mileage (km) is `26 12 05` (because it is the 05 column, where the hex changes from `26 13` to `26 12`) which equals 155,940 km in decimal.
+The hex value for the mileage (km) is `0x26125` (`0x26` + `0x12` + `0x05`) (because it is the 05 column, where the hex changes from `26 13` to `26 12`) which equals 155,940 km in decimal.
 
 The VIN is placed at `0x2E8` - `0x2EF` where `0x2E8` - `0x2EE` contain the last 7 digits of the vehicle VIN and `0x2EF` probably contains the checksum (not sure about that).  
 Since coding a new VIN from standard manufacturer tools is not possible, you may want to write the whole are blank (`0xFF` for `0x2E8` - `0x2EF`).  
