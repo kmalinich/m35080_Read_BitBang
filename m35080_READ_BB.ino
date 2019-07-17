@@ -28,15 +28,15 @@ int retrieve_readings[9];
 
 
 void setup() {
+  Serial.begin(9600);
+  Serial.println();
+  
 	Serial.println("Boot");
 
 	pinMode(Chip_Select, OUTPUT);
 	pinMode(DATAIN,      INPUT);
 	pinMode(DATAOUT,     OUTPUT);
 	pinMode(Sclk,        OUTPUT);
-
-	Serial.begin(9600);
-	Serial.println();
 
 	Serial.flush();
 	Serial.println("Done setting up...");
@@ -50,25 +50,28 @@ void loop() {
 	byte aux;
 
 	Serial.println("INCREMENTAL REGISTERS:");
-	Serial.print("00: ");
+	Serial.print("000: ");
 
 	for (byte index = 0x00; index < 0x10; index = index + 0x01) {
 		aux = read_8(index);
+    if (aux < 16) Serial.print("0");
 		Serial.print(aux, HEX);
 		Serial.print(" ");
 	}
 
 	Serial.print("\n");
-	Serial.print("10: ");
+	Serial.print("010: ");
 
 	for (byte index = 0x10; index < 0x20; index = index + 0x01) {
 		aux = read_8(index);
+    if (aux < 16) Serial.print("0");
 		Serial.print(aux, HEX);
 		Serial.print(" ");
 	}
 
+
 	Serial.println("\n");
-	Serial.print("NOT INCREMENTAL REGISTERS:");
+	Serial.print("NON INCREMENTAL REGISTERS:");
 
 	int cnt = -1 ;
 
@@ -77,16 +80,19 @@ void loop() {
 
 		if (cnt % 8 == 0) {
 			Serial.print("\n");
+      if (index < 16)  Serial.print("0");
+      if (index < 255) Serial.print("0");
 			Serial.print(index, HEX);
 			Serial.print(": ");
 		}
 
 		aux = read_8(index);
+    if (aux < 16) Serial.print("0");
 		Serial.print(aux, HEX);
 		Serial.print(" ");
 	}
 
-	Serial.println("END");
+	Serial.println("\n\nEND");
 	while (1) {
 	}
 }
