@@ -53,11 +53,11 @@ write_secure(adr, val1, val2);
 Secure memory info contains byte pairs. So every pair gets a hex index (which is NOT equal to the hex adress). </br>
 If our example memory looks like this:
 
-| 00  | 01 | 02 | 03 | 04 | 05 | 06 | 07 | Memory-Adress |
+| 00 | 01 | 02 | 03 | 04 | 05 | 06 | 07 | Memory address |
 | :--:|:--:| :--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | 26 13 | 26 13 | 26 13 | 26 13 | 26 12 | 26 12 | 26 12 | 26 12 | 0x00 - 0x0F |
 
-| 08  | 09 | A | B | C | D | E | F | Memory-Adress |
+| 08 | 09 | A | B | C | D | E | F | Memory address |
 | :--:|:--:| :--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 0x10 - 0x1F |
 
@@ -67,9 +67,9 @@ The *VIN* is placed at *0x2E8- 0x2EF* where 0x2E8 - 0x2EE contain the last 7 dig
 
 Example VIN:
 
-| Memory-Adress| 0x2E8  | 0x2E9 | 0x2EA | 0x2EB | 0x2EC | 0x2ED | 0x2EE |
-| :--:|:--:| :--:|:--:|:--:|:--:|:--:|:--:|:--:|
-| Hex  | 4B | 54 | 31 | 37 | 37 | 32 | 37 | 35 |
-| ASCII  | K | T | 1 | 7 | 7 | 2 | 7 | 5 |
+| Memory address | 0x2E8 | 0x2E9 | 0x2EA | 0x2EB | 0x2EC | 0x2ED | 0x2EE |
+| -------------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+| Hex | 4B | 54 | 31 | 37 | 37 | 32 | 37 | 35 |
+| ASCII | K | T | 1 | 7 | 7 | 2 | 7 | 5 |
 
 So here the last 7 Digits of the Vin are KT17727. For fitting a used cluster you want the whole are to be 0xFF.
