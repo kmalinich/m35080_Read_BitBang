@@ -55,11 +55,11 @@ If our example memory looks like this:
 
 | 00 | 01 | 02 | 03 | 04 | 05 | 06 | 07 | Memory address |
 | -- | -- | -- | -- | -- | -- | -- | -- | -------------- |
-| 26 13 | 26 13 | 26 13 | 26 13 | 26 12 | 26 12 | 26 12 | 26 12 | 0x00 - 0x0F |
+| 26 13 | 26 13 | 26 13 | 26 13 | 26 12 | 26 12 | 26 12 | 26 12 | `0x00` - `0x0F` |
 
 | 08 | 09 | A | B | C | D | E | F | Memory address |
 | -- | -- | - | - | - | - | - | - | -------------- |
-| 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 0x10 - 0x1F |
+| 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | 26 12 | `0x10` - `0x1F` |
 
 The Hex-Value for the milage (km) is 26 12 5 (bec. its the 5. column where the hex changes from 2613 to 2612) which equals 155.940 km in decimal.
 
