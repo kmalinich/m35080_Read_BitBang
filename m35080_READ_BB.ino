@@ -30,25 +30,9 @@ int readings[9];
 int retrieve_readings[9];
 
 
-void setup() {
-	Serial.begin(115200);
-	Serial.println();
-
-	Serial.println("Boot");
-
-	pinMode(Chip_Select, OUTPUT);
-	pinMode(DATAIN,      INPUT);
-	pinMode(DATAOUT,     OUTPUT);
-	pinMode(Sclk,        OUTPUT);
-
-	Serial.flush();
-	Serial.println("Done setting up...");
-}
 
 
-void loop() {
-	// while (Serial.available() <= 0) { } ;
-
+void read_full() {
 	byte aux;
 
 	Serial.println("INCREMENTAL REGISTERS:");
@@ -80,7 +64,7 @@ void loop() {
 	for (int index = 0x20; index <= 0x3FF; index = index + 0x1) {
 		cnt++;
 
-		if (cnt % 8 == 0) {
+		if (cnt % 16 == 0) {
 			Serial.print("\n");
 			if (index < 16)  Serial.print("0");
 			if (index < 255) Serial.print("0");
@@ -95,9 +79,8 @@ void loop() {
 	}
 
 	Serial.println("\n\nEND");
-
-	while (1) { } ;
 }
+
 
 
 // functions
@@ -258,6 +241,30 @@ void send_address(int dat) {
 			sclk();
 		}
 	}
+}
+
+
+void setup() {
+	Serial.begin(115200);
+	Serial.println();
+
+	Serial.println("[INIT] Pin configuration");
+
+	pinMode(Chip_Select, OUTPUT);
+	pinMode(DATAIN,      INPUT);
+	pinMode(DATAOUT,     OUTPUT);
+	pinMode(Sclk,        OUTPUT);
+
+	Serial.flush();
+	Serial.println("[INIT] Ready\n");
+}
+
+void loop() {
+	// while (Serial.available() <= 0) { } ;
+
+	read_full();
+
+	while (1) { } ;
 }
 
 
